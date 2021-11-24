@@ -1,4 +1,24 @@
 var array=document.querySelectorAll("button");
+for(var i=0;i< array.length;i++)
+
+{
+  document.querySelectorAll("button")[i].addEventListener("click",function (){
+    var ButtonPressed= this.textContent;
+    soundPlay(ButtonPressed);
+    buttonAnimation(ButtonPressed);
+});
+document.addEventListener("keypress",function(event)
+{
+  soundPlay(event.key);
+  buttonAnimation(event.key);
+} );
+}
+
+function buttonAnimation(current)
+{
+document.querySelector("."+ current).classList.add("pressed");
+setTimeout(function(){ document.querySelector("."+ current).classList.remove("pressed"); }, 100);
+}
 function soundPlay( char)
 {
   switch (char) {
@@ -40,16 +60,4 @@ function soundPlay( char)
     default:
 
   }
-}
-for(var i=0;i< array.length;i++)
-
-{
-  document.querySelectorAll("button")[i].addEventListener("click",function (){
-    var ButtonPressed= this.textContent;
-    soundPlay(ButtonPressed);
-});
-document.addEventListener("keypress",function(event)
-{
-  soundPlay(event.key);
-} );
 }
